@@ -1,0 +1,90 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: rgb(189, 225, 122); /* Original background color */
+    animation: flashLights 3s infinite alternate; /* Flashing effect */
+}
+
+.header_text {
+    font-family: 'Nunito';
+    font-size: 50px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 0px;
+    animation: textFlash 3s infinite alternate; /* Flashing effect for text */
+}
+
+.gif_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px; /* Optional: adds some space between text and image */
+}
+
+.gif_container img {
+    width: 60%; /* Adjust width as needed */
+    height: auto; /* Maintain the aspect ratio */
+    max-width: 500px; /* Limit the maximum width */
+    animation: spin 2s infinite linear; /* Apply the spin animation */
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg); /* Start from 0 degrees */
+    }
+    to {
+        transform: rotate(360deg); /* End at 360 degrees */
+    }
+}
+
+@keyframes flashLights {
+    0% {
+        background-color: rgb(189, 225, 122); /* Original background color */
+    }
+    25% {
+        background-color: rgb(255, 99, 71); /* Tomato red */
+    }
+    50% {
+        background-color: rgb(30, 144, 255); /* Dodger blue */
+    }
+    75% {
+        background-color: rgb(255, 215, 0); /* Golden yellow */
+    }
+    100% {
+        background-color: rgb(189, 225, 122); /* Back to original */
+    }
+}
+
+@keyframes textFlash {
+    0% {
+        color: white; /* Original text color */
+    }
+    25% {
+        color: lightblue; /* Light blue */
+    }
+    50% {
+        color: yellow; /* Yellow */
+    }
+    75% {
+        color: pink; /* Pink */
+    }
+    100% {
+        color: white; /* Back to original */
+    }
+}
+
+.audio-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.custom-player {
+    display: flex;
+    align-items: center;
+}

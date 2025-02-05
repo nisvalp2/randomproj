@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="./yes_style.css">
+    </head> 
+    <body>
+        <div class="container">
+            <div>
+                <h1 class="header_text">I knew you were gonna say yes 🤭</h1>
+            </div>
+            <div class="gif_container">
+                <img src="second_page_main.png" alt="Custom Image">
+            </div>
+            <div class="audio-container">
+                <audio id="audioPlayer" autoplay loop>
+                    <source src="one_night_only.mp3" type="audio/mp3">
+                    Your browser does not support the audio element.
+                </audio>
+                <div class="custom-player">
+                    <button id="playPauseBtn" class="custom-btn">Play</button>
+                    <input type="range" id="seekBar" class="seek-bar" value="0" max="100">
+                    <div class="volume-container">
+                        <label for="volume" class="volume-label">🔊</label>
+                        <input type="range" id="volume" class="volume-bar" value="100" max="100">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            const audio = document.getElementById('audioPlayer');
+            const playPauseBtn = document.getElementById('playPauseBtn');
+            const seekBar = document.getElementById('seekBar');
+            const volumeBar = document.getElementById('volume');
+
+            // Play/Pause Button functionality
+            playPauseBtn.addEventListener('click', () => {
+                if (audio.paused) {
+                    audio.play();
+                    playPauseBtn.textContent = 'Pause';
+                } else {
+                    audio.pause();
+                    playPauseBtn.textContent = 'Play';
+                }
+            });
+
+            // Update Seek Bar as the song plays
+            audio.addEventListener('timeupdate', () => {
+                const progress = (audio.currentTime / audio.duration) * 100;
+                seekBar.value = progress;
+            });
+
+            // Adjust audio position when seek bar is changed
+            seekBar.addEventListener('input', () => {
+                const seekTo = (seekBar.value / 100) * audio.duration;
+                audio.currentTime = seekTo;
+            });
+
+            // Volume control functionality
+            volumeBar.addEventListener('input', () => {
+                audio.volume = volumeBar.value / 100;
+            });
+        </script>
+    </body>
+</html>
